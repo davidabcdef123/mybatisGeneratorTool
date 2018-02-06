@@ -24,7 +24,7 @@
                 <javaClientGenerator targetPackage="com."
                     targetProject="admin" type="XMLMAPPER" />-->
 
-
+		<!--win targetPackage targetProject都用相对路径，mac写法如下-->
 		<javaModelGenerator targetPackage="com"
 							targetProject="/ideaworkspace/zhilian/git/mybatisGeneratorTool/src/main/java" />
 		<!-- 生成Mapper映射xml -->
