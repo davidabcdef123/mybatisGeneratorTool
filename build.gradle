@@ -1,0 +1,45 @@
+group 'mybatisGeneratorTool'
+apply plugin: 'java'
+
+System.properties["file.encoding"] = "UTF-8"
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+buildscript {
+    repositories {
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: "com.arenagod.gradle.MybatisGenerator"
+
+
+dependencies {
+    mybatisGenerator("org.mybatis.generator:mybatis-generator-core:1.3.3")
+    mybatisGenerator("org.mybatis.generator:mybatis-generator-maven-plugin:1.3.2")
+    compile 'org.mybatis.generator:mybatis-generator-core:1.3.5'
+    compile 'mysql:mysql-connector-java:6.0.6'
+
+
+}
+
+configurations {
+    mybatisGenerator
+}
+
+mybatisGenerator {
+    verbose = true
+    configFile = 'generatorConfig.xml'
+}
+
